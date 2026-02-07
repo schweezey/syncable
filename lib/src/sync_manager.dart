@@ -584,7 +584,13 @@ class SyncManager<T extends SyncableDatabase> {
       );
       outQueue.clear();
 
-      outgoing.removeWhere((s) => !s.syncToBackend);
+      outgoing.removeWhere((s) {
+        if (s.syncToBackend != null) {
+          return !s.syncToBackend!;
+        }
+
+        return false;
+      });
 
       if (outgoing.isEmpty) continue;
 

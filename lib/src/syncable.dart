@@ -6,7 +6,7 @@ abstract class Syncable {
   String? get userId;
   DateTime get updatedAt;
   bool get deleted;
-  bool get syncToBackend;
+  bool? get syncToBackend;
 
   /// Converts this object to a JSON representation to send it to the backend.
   Map<String, dynamic> toJson();
